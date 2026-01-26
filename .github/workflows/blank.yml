@@ -6,7 +6,7 @@ jobs:
   docker-test:
     runs-on: ubuntu-latest
     container: alpine
-    steps:
+  
     steps:
          - name: Message 1
            run: echo "Étape 1 OK"
