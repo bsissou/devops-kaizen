@@ -8,10 +8,10 @@ jobs:
     container: alpine
   
     steps:
-         - name: Message 1
-           run: echo "Étape 1 OK"
-         - name: Message 2
-           run: echo "Étape 2 OK"
+              - name: Voir les fichiers
+                run: ls -la
+              - name: Message
+                run: echo "Inspection terminée"
     
       #- name: Test message
     #    run: echo "Docker fonctionne dans le pipeline"
