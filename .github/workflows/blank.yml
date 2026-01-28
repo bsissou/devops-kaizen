@@ -6,12 +6,19 @@ jobs:
   docker-test:
     runs-on: ubuntu-latest
     container: alpine
-  
+
     steps:
-              - name: Voir les fichiers
-                run: ls -la
-              - name: Message
-                run: echo "Inspection terminée"
+         - name: Voir les fichiers
+           run: ls -la
+
+         - name: Vérifier version Node
+           run: node -v
+  
+#    steps:
+#              - name: Voir les fichiers
+#               run: ls -la
+#              - name: Message
+#                run: echo "Inspection terminée"
     
       #- name: Test message
     #    run: echo "Docker fonctionne dans le pipeline"
