@@ -13,3 +13,5 @@ jobs:
 
          - name: Vérifier version Node
            run: node -v
+         - name: message final
+           run: echo " Pipeline ok"
