@@ -8,10 +8,11 @@ jobs:
     container: node:18
 
     steps:
-         - name: Voir les fichiers
-           run: ls -la
+        - name: Télécharger le code
+          uses: actions/checkout@v4
 
-         - name: Vérifier version Node
-           run: node -v
-         - name: message final
-           run: echo " Pipeline ok"
+        - name: Rendre le script exécutable
+          run: chmod +x script.sh
+
+        - name: Exécuter le script
+          run: ./script.sh
