@@ -5,7 +5,7 @@ on: [push]
 jobs:
   docker-test:
     runs-on: ubuntu-latest
-    container: alpine
+    container: node:18
 
     steps:
         - name: Télécharger le code
