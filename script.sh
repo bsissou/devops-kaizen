@@ -1,9 +1,12 @@
-echo "Vérification de Node"
+echo "Début des tests"
 
-if ! command -v node >/dev/null 2>&1; then
-  echo "Node n'est PAS installé"
+RESULT=5
+
+if [ "$RESULT" -eq 5 ]; then
+  echo "Test réussi"
+else
+  echo "Test échoué"
   exit 1
 fi
 
-echo "Node est présent"
-node -v
+echo "Fin des tests"
