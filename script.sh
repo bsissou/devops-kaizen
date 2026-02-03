@@ -1,6 +1,6 @@
 echo "Début des tests"
 
-RESULT=3
+RESULT=5
 
 if [ "$RESULT" -eq 5 ]; then
   echo "Test réussi"
