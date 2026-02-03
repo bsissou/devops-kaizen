@@ -1,12 +1,8 @@
-echo "Début des tests"
+echo "Début du build"
 
-RESULT=5
+echo "Build réalisé le $(date)" > build.txt
 
-if [ "$RESULT" -eq 5 ]; then
-  echo "Test réussi"
-else
-  echo "Test échoué"
-  exit 1
-fi
+echo "Contenu du fichier généré :"
+cat build.txt
 
-echo "Fin des tests"
+echo "Fin du build"
