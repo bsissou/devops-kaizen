@@ -16,3 +16,8 @@ jobs:
 
         - name: Exécuter le script
           run: ./script.sh
+        - name: Upload build artifact
+          uses: actions/upload-artifact@v4
+          with:
+           name: build-file
+           path: build.txt
