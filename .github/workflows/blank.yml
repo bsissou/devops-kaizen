@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      - name: Rendre le script exécutable
+        run: chmod +x script.sh
       - name: Run script
         run: ./script.sh
 
