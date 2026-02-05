@@ -3,27 +3,24 @@ name: CI Kaizen
 on: [push]
 
 jobs:
-  docker-test:
+
+  test:
     runs-on: ubuntu-latest
-    container: node:18
-
     steps:
-        - name: Télécharger le code
-          uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-        - name: Rendre le script exécutable
-          run: chmod +x script.sh
+      - name: Run script
+        run: ./script.sh
 
-        - name: Exécuter le script
-          run: ./script.sh
-          
-        - name: Fake Deploy
-          if: success()
-          run: echo "Déploiement autorisé"
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-file
+          path: build.txt
 
-      
-   #     - name: Upload build artifact
-   #       uses: actions/upload-artifact@v4
-    #      with:
-   #        name: build-file
-  #         path: build.txt
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fake Deploy
+        run: echo "Déploiement exécuté"
