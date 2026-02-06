@@ -22,6 +22,16 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: devops-kaizen
     steps:
-      - name: Fake Deploy
-        run: echo "Déploiement exécuté"
+      - name: Fake Deploy with env & secret
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Environnement: ${{ secrets.DEPLOY_ENV }}"
+  
+   # needs: test
+   # runs-on: ubuntu-latest
+    #steps:
+    #  - name: Fake Deploy
+    #    run: echo "Déploiement exécuté"
