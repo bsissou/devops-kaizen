@@ -11,22 +11,40 @@ jobs:
       - name: Rendre le script exécutable
         run: chmod +x script.sh
       - name: Run script
-        run: ./script.sh
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-file
-          path: build.txt
-
-  deploy:
+  deploy-staging:
+   needs: test
+   if: github.ref == 'refs/heads/develop'
+   runs-on: ubuntu-latest
+   environment:
+    name: staging
+   steps:
+       - name: Deploy to staging
+         run: echo "Déploiement STAGING"
+  deploy-production:
     needs: test
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: production
     steps:
-      - name: Fake Deploy to production
-        run: echo "Déploiement en production"
+      - name: Deploy to production
+        run: echo "Déploiement PRODUCTION"  
+
+      
+    #  - name: Upload build artifact
+     #   uses: actions/upload-artifact@v4
+     #   with:
+      #    name: build-file
+     #     path: build.txt
+
+ # deploy:
+   # needs: test
+   # runs-on: ubuntu-latest
+  #  environment:
+   #   name: production
+   # steps:
+   #   - name: Fake Deploy to production
+      #  run: echo "Déploiement en production"
         
     #env:
   #    APP_NAME: devops-kaizen
@@ -35,7 +53,7 @@ jobs:
     #    run: |
       #    echo "Application: $APP_NAME"
          # echo "Environnement: ${{ secrets.DEPLOY_ENV }}"
-  
+  #########
    # needs: test
    # runs-on: ubuntu-latest
     #steps:
