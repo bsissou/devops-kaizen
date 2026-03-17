@@ -32,7 +32,15 @@ jobs:
       - name: Deploy to production
         run: echo "Déploiement PRODUCTION"  
 
-      
+  docker-build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t mon-image .
+        
     #  - name: Upload build artifact
      #   uses: actions/upload-artifact@v4
      #   with:
