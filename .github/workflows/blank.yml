@@ -12,8 +12,7 @@ jobs:
         run: chmod +x script.sh
       - name: Run script
         run: ./script.sh
-      - name: Login to GHCR
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin   
+        
       
   deploy-staging:
    needs: test
@@ -37,13 +36,18 @@ jobs:
   docker-build:
     needs: test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Build image
-        run: docker build -t ghcr.io/${{ github.repository }}/mon-image:latest .
+        run: docker build -t ghcr.io/${{ github.repository }}/bsimus:latest .
 
       - name: Push image
-        run: docker push ghcr.io/${{ github.repository }}/mon-image:latest
+        run: docker push ghcr.io/${{ github.repository }}/bsimus:latest
 
      # - name: Build Docker image
      #   run: docker build -t mon-image .
