@@ -39,9 +39,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t ghcr.io/${{ github.repository }}/mon-image:latest .
 
-      - name: Build Docker image
-        run: docker build -t mon-image .
+      - name: Push image
+        run: docker push ghcr.io/${{ github.repository }}/mon-image:latest
+
+     # - name: Build Docker image
+     #   run: docker build -t mon-image .
 
        #  - name: Upload build artifact
      #   uses: actions/upload-artifact@v4
