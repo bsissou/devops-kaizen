@@ -28,6 +28,7 @@ jobs:
 
       - name: Push image
         run: docker push ghcr.io/${{ github.repository }}/bsimus:latest
+  
   deploy-staging:
     needs: docker-build
     runs-on: ubuntu-latest
