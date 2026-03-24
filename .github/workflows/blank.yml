@@ -31,10 +31,11 @@ jobs:
   
   deploy-staging:
     needs: docker-build
-    runs-on: ubuntu-latest
-
+    
     if: github.ref == 'refs/heads/develop'
-
+    runs-on: ubuntu-latest
+    environment:
+    name: staging
     steps:
       - name: Simuler déploiement staging
         run: echo "Déploiement en staging réussi"
