@@ -37,7 +37,17 @@ jobs:
 
     steps:
       - name: Simuler déploiement staging
-        run: echo "Déploiement en staging réussi 🚀"
+        run: echo "Déploiement en staging réussi"
+        
+  deploy-production:
+    needs: docker-build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+    name: production
+    steps:
+      - name: Deploy to production
+        run: echo "Déploiement PRODUCTION"       
       
   #deploy-staging:
    #needs: test
@@ -49,15 +59,7 @@ jobs:
       #- name: Deploy to staging
        # run: echo "Déploiement STAGING"
          
- # deploy-production:
- #   needs: test
- #   if: github.ref == 'refs/heads/main'
- #   runs-on: ubuntu-latest
- #   environment:
- #     name: production
- #   steps:
- #     - name: Deploy to production
- #       run: echo "Déploiement PRODUCTION"  
+
 
   
      # - name: Build Docker image
