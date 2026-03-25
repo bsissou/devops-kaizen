@@ -39,14 +39,14 @@ jobs:
       - name: Simuler déploiement staging
         run: echo "Déploiement en staging réussi"
   
-  deploy-production:
+  deploy-productions:
     needs: docker-build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     environment:
-    name: production
+    name: productions
     steps:
       - name: Déploiement production
-        run: echo "Déploiement en production" 
+        run: echo "Déploiement en productions" 
         
       
