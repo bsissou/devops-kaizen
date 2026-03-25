@@ -30,8 +30,7 @@ jobs:
         run: docker push ghcr.io/${{ github.repository }}/bsimus:latest
   
   deploy-staging:
-    needs: docker-build
-    
+    needs: docker-build    
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     environment:
@@ -39,58 +38,15 @@ jobs:
     steps:
       - name: Simuler déploiement staging
         run: echo "Déploiement en staging réussi"
-        
+  
   deploy-production:
     needs: docker-build
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     environment:
     name: production
     steps:
-      - name: Deploy to production
-        run: echo "Déploiement PRODUCTION"       
-      
-  #deploy-staging:
-   #needs: test
-   #if: github.ref == 'refs/heads/develop'
-   #runs-on: ubuntu-latest
-   #environment:
-   # name: staging
-   #steps:
-      #- name: Deploy to staging
-       # run: echo "Déploiement STAGING"
-         
-
-
-  
-     # - name: Build Docker image
-     #   run: docker build -t mon-image .
-
-       #  - name: Upload build artifact
-     #   uses: actions/upload-artifact@v4
-     #   with:
-      #    name: build-file
-     #     path: build.txt
-
- # deploy:
-   # needs: test
-   # runs-on: ubuntu-latest
-  #  environment:
-   #   name: production
-   # steps:
-   #   - name: Fake Deploy to production
-      #  run: echo "Déploiement en production"
+      - name: Déploiement production
+        run: echo "Déploiement en production"
         
-    #env:
-  #    APP_NAME: devops-kaizen
-   # steps:
-   #   - name: Fake Deploy with env & secret
-    #    run: |
-      #    echo "Application: $APP_NAME"
-         # echo "Environnement: ${{ secrets.DEPLOY_ENV }}"
-  #########
-   # needs: test
-   # runs-on: ubuntu-latest
-    #steps:
-    #  - name: Fake Deploy
-    #    run: echo "Déploiement exécuté"
+      
