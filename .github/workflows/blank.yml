@@ -34,7 +34,7 @@ jobs:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     environment:
-    name: staging
+      name: staging
     steps:
       - name: Simuler déploiement staging
         run: echo "Déploiement en staging réussi"
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     environment:
-    name: production
+      name: production
     steps:
       - name: Déploiement production
         run: echo "Déploiement en production" 
