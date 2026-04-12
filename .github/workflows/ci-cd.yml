@@ -31,5 +31,4 @@ jobs:
 
     steps:
       - name: Run container (simulation réelle)
-        run: |
-        docker run -d -p 5000:5000 ghcr.io/${{ github.repository }}/app:latest
+        run: docker run -d -p 5000:5000 ghcr.io/${{ github.repository }}/app:latest
