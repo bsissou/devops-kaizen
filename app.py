@@ -15,8 +15,8 @@ def home():
         )
         return "Connexion DB OK 🚀"
     except Exception as e:
-        return f"Erreur : {e}"
-
+        #return f"Erreur : {e}"
+        return "Version 2"
 if __name__ == "__main__":
     # attendre que MySQL démarre
     time.sleep(5)
